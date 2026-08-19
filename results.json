@@ -3,12 +3,14 @@
 
   "tokenAAddress": "",
   "tokenBAddress": "",
-  "poolContractAddress": "",
+  "task2Address": "",
+  "task3Address": "",
+  "task4Address": "",
 
   "alphaIsCurrency0": null,
   "poolId": "",
   "startingSqrtPriceX96": "",
-  "tickAfterInitialize": null,
+  "tickAfterOpen": null,
 
   "tickLower": null,
   "tickUpper": null,
