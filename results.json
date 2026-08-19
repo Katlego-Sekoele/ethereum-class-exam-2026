@@ -1,0 +1,20 @@
+{
+  "studentNumber": "",
+
+  "tokenAAddress": "",
+  "tokenBAddress": "",
+  "poolContractAddress": "",
+
+  "alphaIsCurrency0": null,
+  "poolId": "",
+  "startingSqrtPriceX96": "",
+  "tickAfterInitialize": null,
+
+  "tickLower": null,
+  "tickUpper": null,
+  "amount0Added": "",
+  "amount1Added": "",
+
+  "predictedAmountOut": "",
+  "actualAmountOut": ""
+}
