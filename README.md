@@ -77,10 +77,14 @@ Deployment one, your token A:
 | --- | --- |
 | `name_` | Token A name from your sheet, in quotes |
 | `symbol_` | Token A symbol from your sheet, in quotes |
-| `initialSupply_` | The initial supply from your sheet |
+| `initialSupply_` | The long `initialSupply_` number from your sheet, copied exactly |
 
 Press **Deploy**. The contract appears under **Deployed Contracts** at the bottom. Click the copy
 icon next to it to get its address.
+
+> Copy the supply straight off your sheet. It has 25 digits, and that is correct. The token has 18
+> decimals, so the number you type is the smallest unit, not whole tokens. Typing a short round
+> number here mints almost nothing, and the first transfer you attempt will then fail.
 
 Deployment two, your token B: same again, with token B's name and symbol.
 
@@ -160,16 +164,20 @@ in and compile.
 Under **Deployed Contracts**, expand your **token A** and call `transfer` with:
 
 - `to`: your `Task3Liquidity` address
-- `amount`: `500000000000000000000000`
+- `amount`: the Task 3 send amount from your sheet, which is half your supply
 
 Do the same on your **token B**.
 
 **Choose your range.** Call `currentTick` on `Task3Liquidity` to see the live tick. Now pick a
 `tickLower` below it and a `tickUpper` above it. Both must be exact multiples of your tick spacing.
 
-A safe way to do it: take the live tick, round it down to a multiple of your spacing, then go
-twenty spacings either side. With spacing 60 and a live tick of 20150, that is 20100 in the middle,
-so 18900 and 21300.
+A safe way to do it: take the live tick, round it to a multiple of your spacing, then go twenty
+spacings either side. With spacing 60 and a live tick of 20150, that is 20100 in the middle, so
+18900 and 21300.
+
+Your live tick may well be negative, depending on which of your tokens became currency0. That is
+normal and nothing is wrong. The same method works: with spacing 10 and a live tick of -17274, you
+could use -17270 in the middle, so -17470 and -17070.
 
 **Call `addLiquidity`** with your `tickLower`, your `tickUpper`, and the liquidity amount from your
 sheet. In the terminal, expand the transaction and look at **decoded output**. It gives you
@@ -204,14 +212,18 @@ and compile.
 | `_tickSpacing` | Same as Tasks 2 and 3 |
 
 **Send it your tokens too**, the same way as Task 3: call `transfer` on token A and on token B,
-this time to your `Task4Swap` address. Send whatever you have left.
+this time to your `Task4Swap` address, using the Task 4 send amount from your sheet. That is the
+other half of your supply, so both contracts end up funded and your own balance ends at zero.
 
 **Work out what you expect.** Your sheet gives you a swap input amount and a direction. Before you
 run anything, work out roughly how much you expect to get back. Your starting price tells you the
 rough exchange rate, and the fee tier tells you what comes off the top. You do not have to be
 exact, but you do need a number and a reason for it.
 
-**Call `recordPrediction`** with that number. Your contract will not let you swap until you have.
+**Call `recordPrediction`** with that number, written in the same units as everything else, so
+18 decimals. If you expect about 3 tokens back, that is `3000000000000000000`.
+
+Your contract will not let you swap until you have recorded something.
 
 **Call `swapExactIn`** with the direction and amount from your sheet:
 
@@ -220,6 +232,9 @@ exact, but you do need a number and a reason for it.
 
 Check **decoded output** again. One amount is negative, the token you paid. The other is positive,
 the token you received. The positive one is your actual output.
+
+Copy both numbers exactly, minus sign and all. They are long because they are in the smallest unit
+of the token, the same as everything else.
 
 **Record these:**
 

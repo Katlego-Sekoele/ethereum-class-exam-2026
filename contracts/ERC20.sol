@@ -27,6 +27,10 @@ abstract contract ERC20 {
     }
 
     function transfer(address to, uint256 amount) public virtual returns (bool) {
+        // Without this the shortfall shows up as a bare arithmetic panic, which is
+        // very hard to read. The usual cause is a number typed with the wrong number
+        // of zeros, since this token has 18 decimals.
+        require(balanceOf[msg.sender] >= amount, "ERC20: balance too small, check the decimals on the amount");
         balanceOf[msg.sender] -= amount;
         unchecked {
             balanceOf[to] += amount;
@@ -37,6 +41,8 @@ abstract contract ERC20 {
 
     function transferFrom(address from, address to, uint256 amount) public virtual returns (bool) {
         uint256 allowed = allowance[from][msg.sender];
+        require(allowed >= amount, "ERC20: not approved for that amount");
+        require(balanceOf[from] >= amount, "ERC20: balance too small, send tokens to that contract first");
         if (allowed != type(uint256).max) allowance[from][msg.sender] = allowed - amount;
         balanceOf[from] -= amount;
         unchecked {
