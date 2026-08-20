@@ -2,8 +2,7 @@
 
 Student number:
 
-Answer all five questions. **Maximum 120 words each.** Each is worth 5 marks, awarded as nothing,
-half or full.
+Answer all five questions. **Maximum 120 words each.**
 
 Full marks need specifics from your own work: your assigned values, your deployed addresses, your
 numbers, your error messages, your range. A correct general description of how Uniswap works

@@ -5,8 +5,7 @@ ECO5037W Fintech and Cryptocurrencies.
 **Three hours. 100 marks. Open book.**
 
 You will mint two reward tokens, open a Uniswap v4 pool at a set price, put liquidity into it, and
-trade against it. Everything runs in your browser. Nothing is installed, nothing costs anything,
-and there is no test network involved.
+trade against it.
 
 The code is already written for you. Your job is to fill in the gaps, each one marked with a
 `TODO` and a hint. There are eleven gaps in total and most are a single line.
@@ -21,25 +20,22 @@ The written section is different. Every question is about your own parameters, y
 and your own numbers. A correct general answer about Uniswap that is not about your pool earns
 nothing.
 
-Do not share code, parameters, addresses or answers. Every student has a different pool.
+Do not share code, parameters, addresses or answers.
 
 ---
 
-## Setup, about five minutes
+## Setup
 
 **Step 1.** Open [remix.ethereum.org](https://remix.ethereum.org).
 
-**Step 2.** In the file explorer on the left, click the **Clone git repository** button and paste
-this repository's URL. Wait for the files to appear.
+**Step 2.** On the top navigation bar, click the **GitHub Link** icon and connect to your GitHub account.
 
-**Step 3.** Click the **Deploy and Run** tab on the far left (the Ethereum logo). At the top, set
-**Environment** to **Remix VM (Cancun)**. If you see an older name like Shanghai or London, change
-it. Uniswap v4 will not run on those.
+**Step 3.** Once connected, click the same icon again and select **Clone**. Paste your fork of the repository's URL and click **OK**. Wait for the files to appear in the file explorer on the left. (*NB* Make sure you are cloning your fork, not the original repository.)
 
 **Step 4.** In the file explorer, right click `scripts/01_setup.js` and choose **Run**. Watch the
 terminal at the bottom. After a few seconds it prints three addresses.
 
-**Step 5.** Copy those three addresses into the table below. You will paste them repeatedly.
+**Step 5.** Copy those three addresses into the table below. You will paste them repeatedly. (There is a button that says *EDIT* at the top of this page, click it to edit this markdown file.)
 
 ```
 Pool manager     0x ______________________________________
@@ -56,40 +52,36 @@ Swap router      0x ______________________________________
 
 ## Your parameter sheet
 
-You were given a sheet with your student number on it. Keep it next to you. Everyone has different
-values, so a neighbour's numbers will not work for you.
+You were given a sheet called `STUDENTNUMBER.txt` with your own parameters for the exam. You will need them repeatedly. Copy them exactly, digit for digit.
 
 ---
 
 ## Task 1: mint your tokens (10 marks)
 
-**Open** `contracts/Task1Token.sol`. There is one gap, `TODO 1.1`. Fill it in.
+**Open** `contracts/Task1Token.sol`. Complete `TODO 1.1`.
 
-**Compile it.** Click the **Solidity Compiler** tab (third icon down) and press **Compile**. Fix
-anything red before moving on.
+**Compile it.** Click the **Compile** button (blue button on the top left). Fix anything red before moving on.
 
-**Deploy it twice.** Go back to **Deploy and Run**. In the **Contract** dropdown choose
-`ExamToken`. Expand the orange **Deploy** button to reveal the three constructor fields, then:
+**Deploy it twice.** Click the **Deploy and Run transactions button** (looks like a Solidity icon). In the **Contract** dropdown choose
+`ExamToken`. (If it says `Task1Token.sol` instead, click the *Compile* button next to it, then follow the next steps.)
 
+**Fill in the three fields for each deployment:**
 Deployment one, your token A:
 
 | Field | What to type |
 | --- | --- |
-| `name_` | Token A name from your sheet, in quotes |
-| `symbol_` | Token A symbol from your sheet, in quotes |
-| `initialSupply_` | The long `initialSupply_` number from your sheet, copied exactly |
+| `name_` | Token A name from your sheet |
+| `symbol_` | Token A symbol from your sheet |
+| `initialSupply_` | The long `initialSupply_` number from your sheet |
 
 Press **Deploy**. The contract appears under **Deployed Contracts** at the bottom. Click the copy
 icon next to it to get its address.
 
-> Copy the supply straight off your sheet. It has 25 digits, and that is correct. The token has 18
-> decimals, so the number you type is the smallest unit, not whole tokens. Typing a short round
-> number here mints almost nothing, and the first transfer you attempt will then fail.
 
-Deployment two, your token B: same again, with token B's name and symbol.
+Deployment two, your token B: same again, with token B's name and symbol and initial supply.
 
-**Write both addresses down now.** Everything from here needs them, and they are painful to
-recover if you lose them.
+**Write both addresses down now.** Everything from here needs them, and they are annoying to
+recover if you lose them. (Replace the underscores in the table below with your addresses, the 0x is just a hint at what the address should look like, so remove it too before you paste.)
 
 ```
 Token A address 0x ______________________________________
@@ -100,11 +92,14 @@ Token B address 0x ______________________________________
 
 ## Task 2: open the pool (20 marks)
 
-**Open** `contracts/Task2Pool.sol`. There are three gaps, `TODO 2.1` to `TODO 2.3`. Fill them in
-and compile.
+**Open** `contracts/Task2Pool.sol`. Complete `TODO 2.1`, `TODO 2.2`, and `TODO 2.3`.
 
-**Deploy `Task2Pool` once.** Choose it in the **Contract** dropdown and fill in the seven
-constructor fields:
+**Compile it.** Click the **Compile** button (blue button on the top left). Fix anything red before moving on.
+
+**Deploy `Task2Pool` once.** Click the **Deploy and Run transactions button** as we did before.
+In the **Contract** dropdown choose `Task2Pool` and click **Deploy**. (If it says `Task2Pool.sol` instead, click the *Compile* button next to it, then follow the next steps.)
+
+**Fill in the seven fields for this deployment:**
 
 | Field | What to type |
 | --- | --- |
@@ -115,6 +110,8 @@ constructor fields:
 | `_tickSpacing` | Tick spacing from your sheet |
 | `_sqrtPriceIfAlphaIsCurrency0` | First long number from your sheet |
 | `_sqrtPriceIfBetaIsCurrency0` | Second long number from your sheet |
+
+Press **Deploy**.
 
 Those last two long numbers are the starting price, written the way the protocol wants it. Your
 sheet gives you both because the pool sorts your two tokens by address, and you do not get to
@@ -139,14 +136,20 @@ tick after openPool     ______________________________________
 Task2Pool address     0x ______________________________________
 ```
 
+*Remember to get the address of the deployed contract, click the copy icon next to the address in the **Deployed Contracts** section.*
+
 ---
 
 ## Task 3: add liquidity (20 marks)
 
-**Open** `contracts/Task3Liquidity.sol`. There are three gaps, `TODO 3.1` to `TODO 3.3`. Fill them
-in and compile.
+**Open** `contracts/Task3Liquidity.sol`. Complete `TODO 3.1`, `TODO 3.2`, and `TODO 3.3`.
 
-**Deploy `Task3Liquidity` once**, with these six fields:
+**Compile it.** Click the **Compile** button (blue button on the top left). Fix anything red before moving on.
+
+**Deploy `Task3Liquidity` once.** Click the **Deploy and Run transactions button** as we did before.
+In the **Contract** dropdown choose `Task3Liquidity` and click **Deploy**. (If it says `Task3Liquidity.sol` instead, click the *Compile* button next to it, then follow the next steps.)
+
+**Fill in the six fields for this deployment:**
 
 | Field | What to type |
 | --- | --- |
@@ -157,10 +160,13 @@ in and compile.
 | `_fee` | Fee tier from your sheet, the same value as Task 2 |
 | `_tickSpacing` | Tick spacing from your sheet, the same value as Task 2 |
 
+Press **Deploy**.
+
 > The fee and tick spacing must match Task 2 exactly. Change either one and you are pointing at a
 > completely different pool, which does not exist, and everything will fail.
 
 **Send it your tokens.** This contract pays for the liquidity, so it has to be holding tokens.
+
 Under **Deployed Contracts**, expand your **token A** and call `transfer` with:
 
 - `to`: your `Task3Liquidity` address
@@ -171,8 +177,8 @@ Do the same on your **token B**.
 **Choose your range.** Call `currentTick` on `Task3Liquidity` to see the live tick. Now pick a
 `tickLower` below it and a `tickUpper` above it. Both must be exact multiples of your tick spacing.
 
-A safe way to do it: take the live tick, round it to a multiple of your spacing, then go twenty
-spacings either side. With spacing 60 and a live tick of 20150, that is 20100 in the middle, so
+A safe way to do it: take the live tick, round it to a multiple of your spacing, then go **twenty
+spacings** either side. With spacing 60 and a live tick of 20150, that is 20100 in the middle, so
 18900 and 21300.
 
 Your live tick may well be negative, depending on which of your tokens became currency0. That is
@@ -193,14 +199,19 @@ amount1          ______________________________________
 Task3 address 0x ______________________________________
 ```
 
+*Remember to get the address of the deployed contract, click the copy icon next to the address in the **Deployed Contracts** section.*
 ---
 
 ## Task 4: predict, then swap (15 marks)
 
-**Open** `contracts/Task4Swap.sol`. There are four gaps, `TODO 4.1` to `TODO 4.4`. Fill them in
-and compile.
+**Open** `contracts/Task4Swap.sol`. Complete `TODO 4.1`, `TODO 4.2`, `TODO 4.3`, and `TODO 4.4`.
 
-**Deploy `Task4Swap` once**, with the swap router this time:
+**Compile it.** Click the **Compile** button (blue button on the top left). Fix anything red before moving on.
+
+**Deploy `Task4Swap` once.** Click the **Deploy and Run transactions button** as we did before. In the **Contract** dropdown choose `Task4Swap` and click **Deploy**. (If it says `Task4Swap.sol` instead, click the *Compile* button next to it, then follow the next steps.)
+
+**Fill in the six fields for this deployment:**
+
 
 | Field | What to type |
 | --- | --- |
@@ -210,6 +221,8 @@ and compile.
 | `_tokenB` | Your token B address |
 | `_fee` | Same as Tasks 2 and 3 |
 | `_tickSpacing` | Same as Tasks 2 and 3 |
+
+Press **Deploy**.
 
 **Send it your tokens too**, the same way as Task 3: call `transfer` on token A and on token B,
 this time to your `Task4Swap` address, using the Task 4 send amount from your sheet. That is the
@@ -244,23 +257,21 @@ actual output       ______________________________________
 Task4 address     0x ______________________________________
 ```
 
+*Remember to get the address of the deployed contract, click the copy icon next to the address in the **Deployed Contracts** section.*
 ---
 
 ## Task 5: report your results (10 marks)
 
-Open `results.json` and fill in every field with the values you wrote down. This is checked by
-running your submitted contracts again and comparing, so the numbers have to be real. A guessed
-number scores nothing, and a blank field scores nothing.
+Open `results.json` and fill in every field with the values you wrote down.
 
 Very long numbers, like the amounts and the price, go in as text inside quotes. The template
-already shows which ones.
+already shows which ones. *NB if the numbers are negative, keep the minus sign. Do not round or truncate anything.*
 
 ---
 
 ## Task 6: written section (25 marks)
 
-Answer all five questions in `ANSWERS.md`. **120 words each, maximum.** Each is worth 5 marks and
-is marked as nothing, half or full.
+Answer all five questions in `ANSWERS.md`. **120 words each, maximum.** Each is worth 5 marks.
 
 Full marks need specifics from your own work: your numbers, your addresses, your error messages,
 your range.
@@ -286,15 +297,16 @@ them, and do not submit the whole workspace as a zip.
 Before you submit, press **Compile** one last time and check there are no red errors. Files that do
 not compile score zero on Tasks 1 to 5, whatever is written in them.
 
+Once you have all files downloaded and checked, create a zip file called `STUDENTNUMBER.zip` and submit it to Amathuba to the exam assignment. Do not submit anything else. Do not submit a folder, only a zip file.
+
 ---
 
-## Reference
+## References & Resources
 
 **Which files you edit.** Only the four task files. `V4.sol`, `ERC20.sol` and `ExamBase.sol` are
-provided and already finished. Reading them is a good idea. Changing them is not.
+provided and already finished.
 
-**What identifies a pool.** The two currencies in sorted order, the fee, the tick spacing, and the
-hooks address. Change any one of them and you are talking about a different pool.
+**Uniswap v4.** [Uniswap v4 docs](https://docs.uniswap.org/contracts/v4). Very comprehensive, but you do not need to read it all. The exam is designed so you can complete it without reading the docs, but they are there if you want to check something.
 
 **Ticks.** `price = 1.0001 ** tick`. Any tick that holds liquidity has to be a multiple of the
 pool's tick spacing.
@@ -302,10 +314,7 @@ pool's tick spacing.
 **Compiler warnings.** The starting files produce warnings about unused variables. That is normal
 and costs you nothing. They disappear as you fill the gaps in. Only red errors matter.
 
-**Optional, `scripts/02_price.js`.** Shows where the two long price numbers on your sheet come
-from. You do not need it to finish the exam.
-
-**Optional, `scripts/03_selfcheck.js`.** Checks the shape of your contracts and the rules they
+**Optional, `scripts/02_selfcheck.js`.** Checks the shape of your contracts and the rules they
 should be enforcing. It does not check your numbers and it is not a mark predictor.
 
 **If something breaks.** Ask the invigilator rather than spending twenty minutes on it. Setup
