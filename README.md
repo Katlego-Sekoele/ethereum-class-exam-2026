@@ -14,7 +14,7 @@ The code is already written for you. Your job is to fill in the gaps, each one m
 
 ## Rules
 
-You may use any documentation, any notes, and any AI assistant for the code.
+You may use any documentation, any notes, and any course resources for the code.
 
 The written section is different. Every question is about your own parameters, your own addresses
 and your own numbers. A correct general answer about Uniswap that is not about your pool earns
