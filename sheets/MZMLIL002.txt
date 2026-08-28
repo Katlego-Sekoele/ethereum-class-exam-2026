@@ -1,0 +1,54 @@
+ECO5037W practical exam 2026
+Parameter sheet for student MZMLIL002
+
+Every number below is meant to be copied exactly as it appears.
+Do not round them and do not retype them from memory.
+
+--- TASK 1, your two tokens ------------------------------------------------
+
+  Token A name          Baobab Points
+  Token A symbol        BAOB
+  Token B name          Vaal Rewards
+  Token B symbol        VAAL
+
+  initialSupply_        1000000000000000000000000
+                        copy that whole number. It looks large because the
+                        token has 18 decimals, so it means 1000000 tokens.
+
+--- TASK 2, your pool ------------------------------------------------------
+
+  _fee                  10000
+  _tickSpacing          10
+
+  Starting price        1 BAOB is worth 3.2 VAAL
+
+  _sqrtPriceIfAlphaIsCurrency0
+                        141727645691436568236881372928
+  _sqrtPriceIfBetaIsCurrency0
+                        44289889278573927574025429040
+
+                        Two numbers, because the pool sorts your tokens by
+                        address and you do not choose which one wins.
+
+--- TASK 3, liquidity ------------------------------------------------------
+
+  Send to your Task3Liquidity contract, from token A and again from token B:
+                        500000000000000000000000
+                        that is half your supply, 500000 tokens
+
+  liquidityDelta        10000000000000000000000
+                        copy exactly. This is a liquidity amount, not a
+                        number of tokens, so do not convert it.
+
+--- TASK 4, the swap -------------------------------------------------------
+
+  Send to your Task4Swap contract, from token A and again from token B:
+                        500000000000000000000000
+                        the rest of your supply, 500000 tokens
+
+  amountIn              1000000000000000000
+                        copy exactly. That is 1 whole token.
+
+  Direction             currency0 into currency1
+                        so zeroForOne is true
+
