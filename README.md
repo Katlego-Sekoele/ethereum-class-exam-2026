@@ -200,6 +200,7 @@ Task3 address 0x ______________________________________
 ```
 
 *Remember to get the address of the deployed contract, click the copy icon next to the address in the **Deployed Contracts** section.*
+
 ---
 
 ## Task 4: predict, then swap (15 marks)
@@ -258,6 +259,7 @@ Task4 address     0x ______________________________________
 ```
 
 *Remember to get the address of the deployed contract, click the copy icon next to the address in the **Deployed Contracts** section.*
+
 ---
 
 ## Task 5: report your results (10 marks)
