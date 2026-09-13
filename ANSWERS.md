@@ -5,8 +5,7 @@ Student number:
 Answer all five questions. **Maximum 120 words each.**
 
 Full marks need specifics from your own work: your assigned values, your deployed addresses, your
-numbers, your error messages, your range. A correct general description of how Uniswap works
-scores nothing on any of these questions.
+numbers, your error messages, your range.
 
 ---
 
@@ -23,7 +22,7 @@ gone wrong if your code in TODO 2.1 had picked the other number.
 ## Question 2 (5 marks)
 
 You committed a predicted output before swapping. State the number you predicted, how you arrived
-at it, and the output you actually received. Account for the whole difference between the two.
+at it, and the output you actually received. Provide a short explanation of why the two numbers were different (if they were). (If they were the same, explain why you were able to predict it so accurately.)
 
 **Answer:**
 
@@ -42,9 +41,10 @@ it gave, and explain what caused it.
 
 ## Question 4 (5 marks)
 
-State the tick range you chose and why. Then answer this: if you had chosen a range that sits
-entirely above the live tick, what would have happened? Name which of your two tokens the pool
-would have taken, which it would have left alone, and why.
+State the tick range you chose and why. If you had chosen a range entirely above the live tick,
+explain what your Task3Liquidity contract would have done with TODO 3.2 completed correctly.
+Then suppose that range-containment check were removed, with all other inputs valid: name which
+of your two tokens Uniswap would have taken, which it would have left alone, and why.
 
 **Answer:**
 
@@ -52,7 +52,7 @@ would have taken, which it would have left alone, and why.
 
 ## Question 5 (5 marks)
 
-Both your tokens use 18 decimals. Suppose one of them had used 6 instead, with the same real world
+Both your tokens use 18 decimals. Suppose token A had used 6 instead and token B still used 18, with the same real world
 price. State what would change about the starting price number you passed in, and state what in
 your pool key would be completely unaffected. Explain why the pool itself neither knows nor cares
 about decimals.

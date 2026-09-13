@@ -7,8 +7,8 @@ ECO5037W Fintech and Cryptocurrencies.
 You will mint two reward tokens, open a Uniswap v4 pool at a set price, put liquidity into it, and
 trade against it.
 
-The code is already written for you. Your job is to fill in the gaps, each one marked with a
-`TODO` and a hint. There are eleven gaps in total and most are a single line.
+Four incomplete smart contracts are provided with gaps marked as
+`TODO`. There are eleven gaps in total.
 
 ---
 
@@ -17,8 +17,7 @@ The code is already written for you. Your job is to fill in the gaps, each one m
 You may use any documentation, any notes, and any course resources for the code.
 
 The written section is different. Every question is about your own parameters, your own addresses
-and your own numbers. A correct general answer about Uniswap that is not about your pool earns
-nothing.
+and your own numbers.
 
 Do not share code, parameters, addresses or answers.
 
@@ -28,11 +27,12 @@ Do not share code, parameters, addresses or answers.
 
 **Step 1.** Open [remix.ethereum.org](https://remix.ethereum.org).
 
-**Step 2.** On the top navigation bar, click the **GitHub Link** icon and connect to your GitHub account.
+**Step 2.** On the top navigation bar, click the *Sign In** button and sign in via your GitHub account.
 
-**Step 3.** Once connected, click the same icon again and select **Clone**. Paste your fork of the repository's URL and click **OK**. Wait for the files to appear in the file explorer on the left. (*NB* Make sure you are cloning your fork, not the original repository.)
+**Step 3.** Once connected, click your profile icon and select **Clone**. Paste your fork of the repository's URL and click **OK**. Wait for the files to appear in the file explorer on the left. (*NB* Make sure you are cloning your fork, not the original repository.)
 
-**Step 4.** In the file explorer, right click `scripts/01_setup.js` and choose **Run**. Watch the
+**Step 4.** In the **Deploy** panel, set Environment to **Remix VM (Osaka)**.
+In the file explorer, right click `scripts/01_setup.js` and choose **Run**. Watch the
 terminal at the bottom. After a few seconds it prints three addresses.
 
 **Step 5.** Copy those three addresses into the table below. You will paste them repeatedly. (There is a button that says *EDIT* at the top of this page, click it to edit this markdown file.)
@@ -52,7 +52,7 @@ Swap router      0x ______________________________________
 
 ## Your parameter sheet
 
-You were given a sheet called `STUDENTNUMBER.txt` with your own parameters for the exam. You will need them repeatedly. Copy them exactly, digit for digit.
+You were given a sheet called `STUDENTNUMBER.txt` with your own parameters for the exam. You will need them repeatedly. Copy them exactly, digit for digit. You can find it under `sheets/STUDENTNUMBER.txt` in the file explorer. Do not rename it. Do not share it.
 
 ---
 
@@ -294,8 +294,8 @@ ANSWERS.md
 Download each one from the Remix file explorer, right click and choose **Download**. Do not rename
 them, and do not submit the whole workspace as a zip.
 
-Before you submit, press **Compile** one last time and check there are no red errors. Files that do
-not compile score zero on Tasks 1 to 5, whatever is written in them.
+Before you submit, press **Compile** one last time and check there are no red errors.
+Each task is assessed separately. Compilation errors affect the relevant task. Correct logic may receive partial credit where the intended implementation is clear.
 
 Once you have all files downloaded and checked, create a zip file called `STUDENTNUMBER.zip` and submit it to Amathuba to the exam assignment. Do not submit anything else. Do not submit a folder, only a zip file.
 
@@ -303,8 +303,9 @@ Once you have all files downloaded and checked, create a zip file called `STUDEN
 
 ## References & Resources
 
-**Which files you edit.** Only the four task files. `V4.sol`, `ERC20.sol` and `ExamBase.sol` are
-provided and already finished.
+**Which files you edit.** Complete the four task contracts, `results.json` and `ANSWERS.md`.
+You may also fill in the address records in this README and the five configuration values in
+the optional self-check script. `V4.sol`, `ERC20.sol` and `ExamBase.sol` are provided and already finished.
 
 **Uniswap v4.** [Uniswap v4 docs](https://docs.uniswap.org/contracts/v4). Very comprehensive, but you do not need to read it all. The exam is designed so you can complete it without reading the docs, but they are there if you want to check something.
 
@@ -316,6 +317,7 @@ and costs you nothing. They disappear as you fill the gaps in. Only red errors m
 
 **Optional, `scripts/02_selfcheck.js`.** Checks the shape of your contracts and the rules they
 should be enforcing. It does not check your numbers and it is not a mark predictor.
+It simulates calls without saving changes.
 
 **If something breaks.** Ask the invigilator rather than spending twenty minutes on it. Setup
 problems are not what is being examined here.

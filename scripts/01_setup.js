@@ -53,7 +53,7 @@ async function deploy(name, signer, args) {
       return contract;
     } catch (error) {
       lastError = error;
-      console.log(`  ${name} did not fit in ${gasLimit} gas, trying a lower limit`);
+      console.log(`  ${name} deployment failed with gas limit ${gasLimit}: ${error.reason || error.message || error}`);
     }
   }
   throw lastError;
@@ -80,8 +80,9 @@ async function deploy(name, signer, args) {
     console.log(`  Liquidity router ${liquidityRouter.address}`);
     console.log(`  Swap router      ${swapRouter.address}`);
     console.log("");
-    console.log("You pass these to your ExamPool constructor, in this order:");
-    console.log("  poolManager, liquidityRouter, swapRouter, tokenA, tokenB");
+    console.log("Use the deployment tables in README.md for each task's constructor:");
+    console.log("  Task 2 needs the pool manager; Task 3 also needs the liquidity router;");
+    console.log("  Task 4 needs the pool manager and swap router.");
     console.log("=================================================================");
   } catch (error) {
     console.error("Setup failed.");
