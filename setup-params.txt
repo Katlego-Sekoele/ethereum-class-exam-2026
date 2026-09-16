@@ -3,3 +3,7 @@ Liquidity router    0xd8b934580fcE35a11B58C6D73aDeE468a2833fa8
 Swap router         0xf8e81D47203A594245E36C48e151709F0C19fBe8
 Token A address     0xD7ACd2a9FD159E69Bb102A1ca21C9a3e3A5F771B
 Token B address     0x7EF2e0048f5bAeDe046f6BF797943daF4ED8CB47
+
+
+Token B is Currency0 (its address comes first)
+Therefore the starting price for the pool is sqrtPriceIfBetaIsCurrency0 = 33405526450006390824855173542
