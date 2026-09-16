@@ -207,11 +207,11 @@ sheet. In the terminal, expand the transaction and look at **decoded output**. I
 **Record these:**
 
 ```
-tickLower        ______________________________________
-tickUpper        ______________________________________
-amount0          ______________________________________
-amount1          ______________________________________
-Task3 address 0x ______________________________________
+tickLower        -21400
+tickUpper        -13400
+amount0          -4175363859800372855981
+amount1          -786101537138692676389
+Task3 address 0x9D7f74d0C41E726EC95884E0e97Fa6129e3b5E99
 ```
 
 *Remember to get the address of the deployed contract, click the copy icon next to the address in the **Deployed Contracts** section.*
