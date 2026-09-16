@@ -23,6 +23,8 @@ Do not share code, parameters, addresses or answers.
 
 ---
 
+
+
 ## Setup
 
 **Step 1.** Open [remix.ethereum.org](https://remix.ethereum.org).
@@ -50,11 +52,15 @@ Swap router      0xf8e81D47203A594245E36C48e151709F0C19fBe8
 
 ---
 
+
+
 ## Your parameter sheet
 
 You were given a sheet called `STUDENTNUMBER.txt` with your own parameters for the exam. You will need them repeatedly. Copy them exactly, digit for digit. You can find it under `sheets/STUDENTNUMBER.txt` in the file explorer. Do not rename it. Do not share it.
 
 ---
+
+
 
 ## Task 1: mint your tokens (10 marks)
 
@@ -68,15 +74,16 @@ You were given a sheet called `STUDENTNUMBER.txt` with your own parameters for t
 **Fill in the three fields for each deployment:**
 Deployment one, your token A:
 
-| Field | What to type |
-| --- | --- |
-| `name_` | Token A name from your sheet |
-| `symbol_` | Token A symbol from your sheet |
+
+| Field            | What to type                                     |
+| ---------------- | ------------------------------------------------ |
+| `name_`          | Token A name from your sheet                     |
+| `symbol_`        | Token A symbol from your sheet                   |
 | `initialSupply_` | The long `initialSupply_` number from your sheet |
+
 
 Press **Deploy**. The contract appears under **Deployed Contracts** at the bottom. Click the copy
 icon next to it to get its address.
-
 
 Deployment two, your token B: same again, with token B's name and symbol and initial supply.
 
@@ -84,11 +91,13 @@ Deployment two, your token B: same again, with token B's name and symbol and ini
 recover if you lose them. (Replace the underscores in the table below with your addresses, the 0x is just a hint at what the address should look like, so remove it too before you paste.)
 
 ```
-Token A address 0x ______________________________________
-Token B address 0x ______________________________________
+Token A address 0xD7ACd2a9FD159E69Bb102A1ca21C9a3e3A5F771B
+Token B address 0x7EF2e0048f5bAeDe046f6BF797943daF4ED8CB47
 ```
 
 ---
+
+
 
 ## Task 2: open the pool (20 marks)
 
@@ -96,20 +105,22 @@ Token B address 0x ______________________________________
 
 **Compile it.** Click the **Compile** button (blue button on the top left). Fix anything red before moving on.
 
-**Deploy `Task2Pool` once.** Click the **Deploy and Run transactions button** as we did before.
+**Deploy** `Task2Pool` **once.** Click the **Deploy and Run transactions button** as we did before.
 In the **Contract** dropdown choose `Task2Pool` and click **Deploy**. (If it says `Task2Pool.sol` instead, click the *Compile* button next to it, then follow the next steps.)
 
 **Fill in the seven fields for this deployment:**
 
-| Field | What to type |
-| --- | --- |
-| `_poolManager` | Pool manager address from Step 5 |
-| `_tokenA` | Your token A address |
-| `_tokenB` | Your token B address |
-| `_fee` | Fee tier from your sheet |
-| `_tickSpacing` | Tick spacing from your sheet |
-| `_sqrtPriceIfAlphaIsCurrency0` | First long number from your sheet |
-| `_sqrtPriceIfBetaIsCurrency0` | Second long number from your sheet |
+
+| Field                          | What to type                       |
+| ------------------------------ | ---------------------------------- |
+| `_poolManager`                 | Pool manager address from Step 5   |
+| `_tokenA`                      | Your token A address               |
+| `_tokenB`                      | Your token B address               |
+| `_fee`                         | Fee tier from your sheet           |
+| `_tickSpacing`                 | Tick spacing from your sheet       |
+| `_sqrtPriceIfAlphaIsCurrency0` | First long number from your sheet  |
+| `_sqrtPriceIfBetaIsCurrency0`  | Second long number from your sheet |
+
 
 Press **Deploy**.
 
@@ -122,7 +133,7 @@ choose which one becomes `currency0`. Your code picks the right one in `TODO 2.1
 1. `alphaIsCurrency0` (blue, free). Note whether it says true or false.
 2. `poolId` (blue, free). Write it down.
 3. `startingSqrtPriceX96` (blue, free). It returns whichever of your two long numbers
-   applies. Write it down.
+  applies. Write it down.
 4. `openPool` (orange, costs gas). This is the one that actually opens the pool.
 5. `currentSlot0` (blue, free). It returns two numbers. The second is the tick.
 
@@ -140,25 +151,29 @@ Task2Pool address     0x ______________________________________
 
 ---
 
+
+
 ## Task 3: add liquidity (20 marks)
 
 **Open** `contracts/Task3Liquidity.sol`. Complete `TODO 3.1`, `TODO 3.2`, and `TODO 3.3`.
 
 **Compile it.** Click the **Compile** button (blue button on the top left). Fix anything red before moving on.
 
-**Deploy `Task3Liquidity` once.** Click the **Deploy and Run transactions button** as we did before.
+**Deploy** `Task3Liquidity` **once.** Click the **Deploy and Run transactions button** as we did before.
 In the **Contract** dropdown choose `Task3Liquidity` and click **Deploy**. (If it says `Task3Liquidity.sol` instead, click the *Compile* button next to it, then follow the next steps.)
 
 **Fill in the six fields for this deployment:**
 
-| Field | What to type |
-| --- | --- |
-| `_poolManager` | Pool manager address from Step 5 |
-| `_liquidityRouter` | Liquidity router address from Step 5 |
-| `_tokenA` | Your token A address |
-| `_tokenB` | Your token B address |
-| `_fee` | Fee tier from your sheet, the same value as Task 2 |
-| `_tickSpacing` | Tick spacing from your sheet, the same value as Task 2 |
+
+| Field              | What to type                                           |
+| ------------------ | ------------------------------------------------------ |
+| `_poolManager`     | Pool manager address from Step 5                       |
+| `_liquidityRouter` | Liquidity router address from Step 5                   |
+| `_tokenA`          | Your token A address                                   |
+| `_tokenB`          | Your token B address                                   |
+| `_fee`             | Fee tier from your sheet, the same value as Task 2     |
+| `_tickSpacing`     | Tick spacing from your sheet, the same value as Task 2 |
+
 
 Press **Deploy**.
 
@@ -185,7 +200,7 @@ Your live tick may well be negative, depending on which of your tokens became cu
 normal and nothing is wrong. The same method works: with spacing 10 and a live tick of -17274, you
 could use -17270 in the middle, so -17470 and -17070.
 
-**Call `addLiquidity`** with your `tickLower`, your `tickUpper`, and the liquidity amount from your
+**Call** `addLiquidity` with your `tickLower`, your `tickUpper`, and the liquidity amount from your
 sheet. In the terminal, expand the transaction and look at **decoded output**. It gives you
 `amount0` and `amount1`, both negative because the tokens left your contract.
 
@@ -203,25 +218,28 @@ Task3 address 0x ______________________________________
 
 ---
 
+
+
 ## Task 4: predict, then swap (15 marks)
 
 **Open** `contracts/Task4Swap.sol`. Complete `TODO 4.1`, `TODO 4.2`, `TODO 4.3`, and `TODO 4.4`.
 
 **Compile it.** Click the **Compile** button (blue button on the top left). Fix anything red before moving on.
 
-**Deploy `Task4Swap` once.** Click the **Deploy and Run transactions button** as we did before. In the **Contract** dropdown choose `Task4Swap` and click **Deploy**. (If it says `Task4Swap.sol` instead, click the *Compile* button next to it, then follow the next steps.)
+**Deploy** `Task4Swap` **once.** Click the **Deploy and Run transactions button** as we did before. In the **Contract** dropdown choose `Task4Swap` and click **Deploy**. (If it says `Task4Swap.sol` instead, click the *Compile* button next to it, then follow the next steps.)
 
 **Fill in the six fields for this deployment:**
 
 
-| Field | What to type |
-| --- | --- |
+| Field          | What to type                     |
+| -------------- | -------------------------------- |
 | `_poolManager` | Pool manager address from Step 5 |
-| `_swapRouter` | Swap router address from Step 5 |
-| `_tokenA` | Your token A address |
-| `_tokenB` | Your token B address |
-| `_fee` | Same as Tasks 2 and 3 |
-| `_tickSpacing` | Same as Tasks 2 and 3 |
+| `_swapRouter`  | Swap router address from Step 5  |
+| `_tokenA`      | Your token A address             |
+| `_tokenB`      | Your token B address             |
+| `_fee`         | Same as Tasks 2 and 3            |
+| `_tickSpacing` | Same as Tasks 2 and 3            |
+
 
 Press **Deploy**.
 
@@ -234,12 +252,12 @@ run anything, work out roughly how much you expect to get back. Your starting pr
 rough exchange rate, and the fee tier tells you what comes off the top. You do not have to be
 exact, but you do need a number and a reason for it.
 
-**Call `recordPrediction`** with that number, written in the same units as everything else, so
+**Call** `recordPrediction` with that number, written in the same units as everything else, so
 18 decimals. If you expect about 3 tokens back, that is `3000000000000000000`.
 
 Your contract will not let you swap until you have recorded something.
 
-**Call `swapExactIn`** with the direction and amount from your sheet:
+**Call** `swapExactIn` with the direction and amount from your sheet:
 
 - `zeroForOne`: true if your sheet says currency0 into currency1, false otherwise
 - `amountIn`: the swap input amount from your sheet
@@ -262,6 +280,8 @@ Task4 address     0x ______________________________________
 
 ---
 
+
+
 ## Task 5: report your results (10 marks)
 
 Open `results.json` and fill in every field with the values you wrote down.
@@ -271,6 +291,8 @@ already shows which ones. *NB if the numbers are negative, keep the minus sign. 
 
 ---
 
+
+
 ## Task 6: written section (25 marks)
 
 Answer all five questions in `ANSWERS.md`. **120 words each, maximum.** Each is worth 5 marks.
@@ -279,6 +301,8 @@ Full marks need specifics from your own work: your numbers, your addresses, your
 your range.
 
 ---
+
+
 
 ## Submitting
 
@@ -303,6 +327,8 @@ Once you have all files downloaded and checked, create a zip file called `STUDEN
 
 ---
 
+
+
 ## References & Resources
 
 **Which files you edit.** Complete the four task contracts, `results.json` and `ANSWERS.md`.
@@ -317,7 +343,7 @@ pool's tick spacing.
 **Compiler warnings.** The starting files produce warnings about unused variables. That is normal
 and costs you nothing. They disappear as you fill the gaps in. Only red errors matter.
 
-**Optional, `scripts/02_selfcheck.js`.** Checks the shape of your contracts and the rules they
+**Optional,** `scripts/02_selfcheck.js`**.** Checks the shape of your contracts and the rules they
 should be enforcing. It does not check your numbers and it is not a mark predictor.
 It simulates calls without saving changes.
 
