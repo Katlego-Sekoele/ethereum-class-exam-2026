@@ -21,5 +21,36 @@ amount1                 -786101537138692676389
 Task3 address           0x9D7f74d0C41E726EC95884E0e97Fa6129e3b5E99
 
 
+Task4 address           0xb27A31f1b0AF2946B7F582768f03239b1eC07c2c
+predicted output    4170075020383450824704
+actual output       5606799220113670611
+amount0 5606799220113670611
+amount1 -1000000000000000000
+Task4 address     0xb27A31f1b0AF2946B7F582768f03239b1eC07c2c
+
 Token B is Currency0 (its address comes first)
 Therefore the starting price for the pool is sqrtPriceIfBetaIsCurrency0 = 33405526450006390824855173542
+
+Real price is P = ( sqrtPriceIfBetaIsCurrency0 / 2**(96) )
+
+
+sqrtP = currency0 / currency1
+we know that currency 0 is token B
+Therefore:
+sqrtP = TokenBReserves / TokenAReserves
+
+we want to convert currency1 into currency0
+i.e. convert TokenA into TokenB
+We had that we provided the following tokens into the pool
+currency0 = TokenB = 4175363859800372855981
+currency1 = TokenA = 786101537138692676389
+
+therefore the constant product ratio in the pool is
+k = TokenB * TokenA
+k = 4175363859800372855981 * 786101537138692676389
+k = 3.282259948302418 * 10**42
+
+k = TokenB * TokenA
+3.282259948302418 * 10**42 = newTokenBPrice * (786101537138692676389 + (1000000000000000000 - 0.003 * 1000000000000000000))
+newTokenBPrice = 3.282259948302418 * 10**42 / (786101537138692676389 + (1000000000000000000 - 0.003 * 1000000000000000000))
+newTokenBPrice = 4170075020383450824704
