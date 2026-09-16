@@ -55,8 +55,8 @@ contract Task3Liquidity is ExamBase {
         //
         // Replace the two conditions marked below.
 
-        require(true /* replace: tickLower is on the grid */, "tickLower is not a multiple of the tick spacing");
-        require(true /* replace: tickUpper is on the grid */, "tickUpper is not a multiple of the tick spacing");
+        require(tickLower % TICK_SPACING == 0 /* replace: tickLower is on the grid */, "tickLower is not a multiple of the tick spacing");
+        require(tickUpper % TICK_SPACING == 0 /* replace: tickUpper is on the grid */, "tickUpper is not a multiple of the tick spacing");
 
         // TODO 3.2 --------------------------------------------------------
         // Liquidity is only active while the price sits inside your range. So the
@@ -65,7 +65,7 @@ contract Task3Liquidity is ExamBase {
         //
         // Replace the condition marked below.
 
-        require(true /* replace: the range contains liveTick */, "your range does not contain the live tick");
+        require(liveTick >= tickLower && liveTick < tickUpper /* replace: the range contains liveTick */, "your range does not contain the live tick");
 
         // TODO 3.3 --------------------------------------------------------
         // Ask the router to add the liquidity. The call looks like this:
@@ -83,7 +83,16 @@ contract Task3Liquidity is ExamBase {
         //
         // It gives you back a BalanceDelta. Replace the line below with that call.
 
-        BalanceDelta delta = BalanceDelta.wrap(0); // <-- replace this
+        BalanceDelta delta = liquidityRouter.modifyLiquidity(
+            poolKey(),
+            ModifyLiquidityParams({
+                tickLower: tickLower,
+                tickUpper: tickUpper,
+                liquidityDelta: liquidityDelta,
+                salt: bytes32(0)
+            }),
+            ""
+        );
 
         // Provided. amount0 and amount1 come back negative, because the tokens left
         // this contract and went into the pool.
