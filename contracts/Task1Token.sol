@@ -21,5 +21,6 @@ contract ExamToken is ERC20 {
         // The person deploying is msg.sender. The amount is initialSupply_.
         // Write one line below.
 
+        _mint(msg.sender, initialSupply_);
     }
 }
