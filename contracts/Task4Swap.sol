@@ -74,7 +74,7 @@ contract Task4Swap is ExamBase {
         // and then make it negative.
         // Replace the line below.
 
-        int256 amountSpecified = int256(amountIn); // <-- replace this
+        int256 amountSpecified = -int256(amountIn); // <-- replace this
 
         // TODO 4.4 --------------------------------------------------------
         // sqrtPriceLimitX96 is the furthest the price is allowed to move during the
