@@ -1,0 +1,445 @@
+{
+	"compiler": {
+		"version": "0.8.34+commit.80d5c536"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_poolManager",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_tokenA",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_tokenB",
+						"type": "address"
+					},
+					{
+						"internalType": "uint24",
+						"name": "_fee",
+						"type": "uint24"
+					},
+					{
+						"internalType": "int24",
+						"name": "_tickSpacing",
+						"type": "int24"
+					},
+					{
+						"internalType": "uint160",
+						"name": "_sqrtPriceIfAlphaIsCurrency0",
+						"type": "uint160"
+					},
+					{
+						"internalType": "uint160",
+						"name": "_sqrtPriceIfBetaIsCurrency0",
+						"type": "uint160"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "bytes32",
+						"name": "poolId",
+						"type": "bytes32"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "currency0",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "currency1",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint24",
+						"name": "fee",
+						"type": "uint24"
+					},
+					{
+						"indexed": false,
+						"internalType": "int24",
+						"name": "tickSpacing",
+						"type": "int24"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint160",
+						"name": "sqrtPriceX96",
+						"type": "uint160"
+					},
+					{
+						"indexed": false,
+						"internalType": "int24",
+						"name": "tick",
+						"type": "int24"
+					}
+				],
+				"name": "PoolOpened",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "FEE",
+				"outputs": [
+					{
+						"internalType": "uint24",
+						"name": "",
+						"type": "uint24"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "TICK_SPACING",
+				"outputs": [
+					{
+						"internalType": "int24",
+						"name": "",
+						"type": "int24"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "alphaIsCurrency0",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "currency0",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "currency1",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "currentSlot0",
+				"outputs": [
+					{
+						"internalType": "uint160",
+						"name": "sqrtPriceX96",
+						"type": "uint160"
+					},
+					{
+						"internalType": "int24",
+						"name": "tick",
+						"type": "int24"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "currentTick",
+				"outputs": [
+					{
+						"internalType": "int24",
+						"name": "tick",
+						"type": "int24"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "openPool",
+				"outputs": [
+					{
+						"internalType": "int24",
+						"name": "tick",
+						"type": "int24"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "poolExists",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "poolId",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "poolKey",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "Currency",
+								"name": "currency0",
+								"type": "address"
+							},
+							{
+								"internalType": "Currency",
+								"name": "currency1",
+								"type": "address"
+							},
+							{
+								"internalType": "uint24",
+								"name": "fee",
+								"type": "uint24"
+							},
+							{
+								"internalType": "int24",
+								"name": "tickSpacing",
+								"type": "int24"
+							},
+							{
+								"internalType": "contract IHooks",
+								"name": "hooks",
+								"type": "address"
+							}
+						],
+						"internalType": "struct PoolKey",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "poolManager",
+				"outputs": [
+					{
+						"internalType": "contract IPoolManager",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "sqrtPriceIfAlphaIsCurrency0",
+				"outputs": [
+					{
+						"internalType": "uint160",
+						"name": "",
+						"type": "uint160"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "sqrtPriceIfBetaIsCurrency0",
+				"outputs": [
+					{
+						"internalType": "uint160",
+						"name": "",
+						"type": "uint160"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "startingSqrtPriceX96",
+				"outputs": [
+					{
+						"internalType": "uint160",
+						"name": "",
+						"type": "uint160"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "tokenA",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "tokenB",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"FEE()": {
+					"notice": "The fee tier and tick spacing from your parameter sheet."
+				},
+				"alphaIsCurrency0()": {
+					"notice": "The pool sorts the two currencies by address. This tells you which way it went."
+				},
+				"currency0()": {
+					"notice": "The lower of your two token addresses."
+				},
+				"currency1()": {
+					"notice": "The higher of your two token addresses."
+				},
+				"currentSlot0()": {
+					"notice": "The live price and tick of your pool. Both are zero before the pool is opened."
+				},
+				"currentTick()": {
+					"notice": "The live tick of your pool."
+				},
+				"openPool()": {
+					"notice": "Opens the pool. You only ever call this once."
+				},
+				"poolExists()": {
+					"notice": "False until Task 2 has opened the pool."
+				},
+				"poolId()": {
+					"notice": "The unique id of your pool."
+				},
+				"poolKey()": {
+					"notice": "The four fields that identify your pool, plus the hooks address."
+				},
+				"sqrtPriceIfAlphaIsCurrency0()": {
+					"notice": "The two starting prices from your parameter sheet."
+				},
+				"startingSqrtPriceX96()": {
+					"notice": "The starting price that matches the way the pool actually sorted your tokens."
+				},
+				"tokenA()": {
+					"notice": "Your token A and token B, exactly as you deployed them in Task 1."
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/Task2Pool.sol": "Task2Pool"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/ExamBase.sol": {
+			"keccak256": "0xe76123fee7c11848618543607ee6654ffe7ba761625d9a3b21a99fb9f997787f",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://7b13ac692d4f21919312c9c7d37d79f3fb71bb0b5e20e0b2e2df75a08c10d33f",
+				"dweb:/ipfs/QmNyq77tgW4Kkn8jDo4HGHi9nRDfzyDXdGg5hrDHAEHFNu"
+			]
+		},
+		"contracts/Task2Pool.sol": {
+			"keccak256": "0x5c3f8c55835eba46ad91e90d7268797fb3ad90f08117830abc06514f731e7538",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://8a903720d4a1bbd320fb1ff3dcd9dfd8c13f6efa28b1467be9a7e6a3dbc88c65",
+				"dweb:/ipfs/QmZAVm7EDgS7H4JCsMg7SUcNXVuHUghDebveHY6bCNnqYn"
+			]
+		},
+		"contracts/V4.sol": {
+			"keccak256": "0xb36fbe0a30cd872fb2b7c19cc96c50ee4a051fb4b450f71d6576f9cb4e9e5907",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://9c4a33a4f015bed6fe0dd30d2eac2c4c31824887a95070f75b40f9c174d10d44",
+				"dweb:/ipfs/QmQVigBTeHQb1xeH5Ggq35bGJXG92LfAq7EZsjurkkuMBs"
+			]
+		}
+	},
+	"version": 1
+}
